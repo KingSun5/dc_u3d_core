@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95D00040-0B43-4784-AC86-AFB9BCA7C6D3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dc</RootNamespace>
+    <AssemblyName>UnityCore</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\libs\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>..\libs\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>..\libs\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\libs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\libs\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Config\ConfigBase.cs" />
+    <Compile Include="Classes\Config\CSVDocument.cs" />
+    <Compile Include="Classes\Core\ByteArray.cs" />
+    <Compile Include="Classes\Core\CommonValue.cs" />
+    <Compile Include="Classes\Core\Singleton.cs" />
+    <Compile Include="Classes\Event\EventController.cs" />
+    <Compile Include="Classes\Event\EventDispatcher.cs" />
+    <Compile Include="Classes\Event\GameEvent.cs" />
+    <Compile Include="Classes\Event\IEventBase.cs" />
+    <Compile Include="Classes\Event\UIEventListener.cs" />
+    <Compile Include="Classes\Log\Log.cs" />
+    <Compile Include="Classes\Pools\AudioSourcePools.cs" />
+    <Compile Include="Classes\Pools\GameobjectPools.cs" />
+    <Compile Include="Classes\Pools\ObjectPools.cs" />
+    <Compile Include="Classes\Pools\SpritePools.cs" />
+    <Compile Include="Classes\Resource\HttpDownloadManager.cs" />
+    <Compile Include="Classes\Resource\MultyBuildManager.cs" />
+    <Compile Include="Classes\Resource\ResourceLoaderManager.cs" />
+    <Compile Include="Classes\Socket\Buffer\SendRecvBuffer.cs" />
+    <Compile Include="Classes\Socket\Buffer\SendRecvBufferPools.cs" />
+    <Compile Include="Classes\Socket\IDMap\SocketID.cs" />
+    <Compile Include="Classes\Socket\Socket\TCPClientSocket.cs" />
+    <Compile Include="Classes\Socket\Socket\TCPServerSocket.cs" />
+    <Compile Include="Classes\Socket\Token\UserToken.cs" />
+    <Compile Include="Classes\Socket\Token\UserTokenPools.cs" />
+    <Compile Include="Classes\Timer\IntervalTime.cs" />
+    <Compile Include="Classes\Timer\TimerManager.cs" />
+    <Compile Include="Classes\UI\Component\LoopScrollRect\LoopHorizontalScrollRect.cs" />
+    <Compile Include="Classes\UI\Component\LoopScrollRect\LoopScrollRect.cs" />
+    <Compile Include="Classes\UI\Component\LoopScrollRect\LoopVerticalScrollRect.cs" />
+    <Compile Include="Classes\Utils\BezierUtils.cs" />
+    <Compile Include="Classes\Utils\ByteUtils.cs" />
+    <Compile Include="Classes\Utils\ColorUtils.cs" />
+    <Compile Include="Classes\Utils\CommonUtils.cs" />
+    <Compile Include="Classes\Utils\DataUtils.cs" />
+    <Compile Include="Classes\Utils\EncodingUtils.cs" />
+    <Compile Include="Classes\Utils\FileUtils.cs" />
+    <Compile Include="Classes\Utils\IntUtils.cs" />
+    <Compile Include="Classes\Utils\Math2DUtils.cs" />
+    <Compile Include="Classes\Utils\MathUtils.cs" />
+    <Compile Include="Classes\Utils\PlatformUtils.cs" />
+    <Compile Include="Classes\Utils\StringUtils.cs" />
+    <Compile Include="Classes\Utils\TimeUtils.cs" />
+    <Compile Include="Classes\Utils\XmlUtils.cs" />
+    <Compile Include="Classes\Utils\ZipUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)UnityCore.dll" "$(SolutionDir)\Assets\Plugins\lib"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
