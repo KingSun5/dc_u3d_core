@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Sprite对象池
 /// @author hannibal
-/// @time 2017-1-20
+/// @time 2016-1-20
 /// </summary>
 public class SpritePools
 {

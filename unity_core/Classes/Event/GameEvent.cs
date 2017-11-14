@@ -6,7 +6,7 @@ using System.Text;
 /// <summary>
 /// 事件参数
 /// @author hannibal
-/// @time 2017-3-26
+/// @time 2016-3-26
 /// </summary>
 public struct GameEvent
 {

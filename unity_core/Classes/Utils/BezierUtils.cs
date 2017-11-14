@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 贝塞尔曲线
 /// @author hannibal
-/// @time 2017-2-8
+/// @time 2016-2-8
 /// </summary>
 public class BezierUtils
 {

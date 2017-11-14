@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// 字节数组
 /// @author hannibal
-/// @time 2017-5-23
+/// @time 2016-5-23
 /// </summary>
 public class ByteArray
 {

@@ -7,7 +7,7 @@ using System.Threading;
 /// <summary>
 /// 客户端tcp
 /// @author hannibal
-/// @time 2017-5-23
+/// @time 2016-5-23
 /// </summary>
 public sealed class TCPClientSocket
 {

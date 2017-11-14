@@ -8,7 +8,7 @@ using System.Text;
 /// 1.需要重写Init
 /// 2.使用对象池的类，集合成员变量，需要在Init里面清空
 /// @author hannibal
-/// @time 2017-9-11
+/// @time 2016-9-11
 /// </summary>
 public interface IPoolsObject
 {
@@ -19,7 +19,7 @@ public interface IPoolsObject
 /// 对象池
 /// 1.使用对象池，需要把原有对象的集合清空(list,dictionary等)
 /// @author hannibal
-/// @time 2017-7-24
+/// @time 2016-7-24
 /// </summary>
 public sealed class ObjectPools
 {

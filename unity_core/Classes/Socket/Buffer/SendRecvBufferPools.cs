@@ -5,7 +5,7 @@ using System.Text;
 /// <summary>
 /// buff对象池
 /// @author hannibal
-/// @time 2017-5-23
+/// @time 2016-5-23
 /// </summary>
 public class SendRecvBufferPools
 {

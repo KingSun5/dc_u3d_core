@@ -6,6 +6,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
+/// <summary>
+/// iocp单个对象缓冲
+/// @author hannibal
+/// @time 2016-5-23
+/// </summary>
 public class UserToken
 {
     /// <summary>

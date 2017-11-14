@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 通用存储类型
 /// @author hannibal
-/// @time 2017-5-2
+/// @time 2016-5-2
 /// </summary>
 public class CommonValue
 {

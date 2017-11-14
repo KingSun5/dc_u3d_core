@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// 定时器
 /// @author hannibal
-/// @time 2017-3-7
+/// @time 2016-3-7
 /// </summary>
 public class IntervalTime
 {

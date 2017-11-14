@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 
+/// <summary>
+/// 单个连接开辟的缓冲
+/// @author hannibal
+/// @time 2016-5-23
+/// </summary>
 public class SendRecvBuffer
 {
     /// <summary>
