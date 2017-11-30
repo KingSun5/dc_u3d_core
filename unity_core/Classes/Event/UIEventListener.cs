@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// </summary>
 public sealed class UIEventListener : EventTrigger
 {
-    public delegate void EventDelegate(UIEventArgs args);
+    public delegate void EventDelegate(UIEvent args);
     public EventDelegate[] UIEventHandleList = new EventDelegate[(int)eUIEventType.Max];
 	
 	static public UIEventListener Get(GameObject go)
@@ -92,7 +92,7 @@ public sealed class UIEventListener : EventTrigger
         EventDelegate handle = UIEventHandleList[(int)type];
         if (handle != null)
         {
-            UIEventArgs args = new UIEventArgs();
+            UIEvent args = new UIEvent();
             args.type = type;
             args.target = gameObject;
             args.data = eventData;
@@ -112,7 +112,7 @@ public sealed class UIEventListener : EventTrigger
 /// <summary>
 /// 事件参数
 /// </summary>
-public struct UIEventArgs
+public struct UIEvent
 {
     public eUIEventType type;
     public GameObject target;

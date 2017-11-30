@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// 数学
@@ -26,46 +27,64 @@ public class MathUtils
 	{
 		return (first > second ? first : second);
 	}
-	/**
-	 * 获得一个数的符号(-1,0,1)
-	 * 结果：大于0：1，小于0：-1，等于0:0
-	 */		
+    /// <summary>
+    /// 获得一个数的符号(-1,0,1)
+    /// </summary>
+    /// <returns>大于0：1，小于0：-1，等于0:0</returns>
 	public static int Sign(float value)
 	{
 		return (value < 0 ? -1 : (value > 0 ? 1 : 0));
-	}
-
-	/**
-	 * 产生随机数
-	 * 结果：x>=param1 && x<param2
-	 */		
+	}	
+    /// <summary>
+    /// 产生随机数
+    /// </summary>
+    /// <returns>x>=param1 && x<param2</returns>
 	public static float RandRange(float param1, float param2) 
 	{
 		float loc = Random.Range(param1, param2);
 		return loc;
 	}
-	/**
-	 * 产生随机数
-	 * 结果：x>=param1 && x<param2
-	 */	
+    /// <summary>
+    /// 产生随机数
+    /// </summary>
+    /// <returns>x>=param1 && x<param2</returns>
 	public static int RandRange_Int(int param1, int param2) 
 	{
 		int loc = param1 + (int)(Random.Range(0f, 1f)*(param2-param1));
 		return loc;
 	}
-	/**
-	 * 从数组中产生随机数[-1,1,2]
-	 * 结果：-1/1/2中的一个
-	 */	
-	public static T RandRange_Array<T>(T[] arr) 
-	{
+    /// <summary>
+    /// 从数组中产生随机数[-1,1,2]
+    /// </summary>
+    /// <returns>-1/1/2中的一个</returns>
+	public static T RandRange_Array<T>(T[] arr)
+    {
+        if (arr.Length == 0)
+        {
+            Log.Error("错误的参数");
+            return default(T);
+        }
 		T loc = arr[RandRange_Int(0, arr.Length)];
 		return loc;
 	}
-	/**
-	 * 随机1/-1
-	 * 结果：1/-1
-	 */	
+    /// <summary>
+    /// 从数组中产生随机数[-1,1,2]
+    /// </summary>
+    /// <returns>-1/1/2中的一个</returns>
+    public static T RandRange_List<T>(List<T> arr)
+    {
+        if (arr.Count == 0)
+        {
+            Log.Error("错误的参数");
+            return default(T);
+        }
+        T loc = arr[RandRange_Int(0, arr.Count)];
+        return loc;
+    }
+    /// <summary>
+    /// 随机1/-1
+    /// </summary>
+    /// <returns>1/-1</returns>
 	public static int Rand_Sign() 
 	{
 		int[] arr = new int[2]{-1, 1};
@@ -98,11 +117,11 @@ public class MathUtils
 		
 		return (n < min ? min : (n > max ? max : n));
 	}
-	/**
-	 * 把一个数转换到0-360之间
-	 * @param num 需要转换的数
-	 * @return 转换后的数
-	 */
+	/// <summary>
+    /// 把一个数转换到0-360之间
+	/// </summary>
+	/// <param name="num"></param>
+	/// <returns></returns>
 	public static float Cleap0_360(float num)
 	{
 		num = num % 360;
