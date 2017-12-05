@@ -95,6 +95,7 @@
     <Compile Include="Classes\Socket\Token\UserTokenPools.cs" />
     <Compile Include="Classes\Timer\IntervalTime.cs" />
     <Compile Include="Classes\Timer\TimerManager.cs" />
+    <Compile Include="Classes\Tools\Http\HttpClient.cs" />
     <Compile Include="Classes\Transformer\ActionTransformer.cs" />
     <Compile Include="Classes\Transformer\BlinkTransformer.cs" />
     <Compile Include="Classes\Transformer\FlipTransformer.cs" />
@@ -149,9 +150,6 @@
     <Compile Include="Classes\Utils\XmlUtils.cs" />
     <Compile Include="Classes\Utils\ZipUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DOTween.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
