@@ -43,14 +43,14 @@ public class EventDispatcher
             m_dispathcerMap[EventID](info);
         }
     }
-    static public GameEvent m_DefaultGameEvent = new GameEvent();
     public void TriggerEvent(string EventID, params object[] list)
     {
-        m_DefaultGameEvent.Init(list);
-        m_DefaultGameEvent.type = EventID;
+        GameEvent info = new GameEvent();
+        info.Init(list);
+        info.type = EventID;
         if (m_dispathcerMap.ContainsKey(EventID) && m_dispathcerMap[EventID] != null)
         {
-            m_dispathcerMap[EventID](m_DefaultGameEvent);
+            m_dispathcerMap[EventID](info);
         }
     }
     public void Cleanup()

@@ -20,6 +20,13 @@ public abstract class ConfigBase
     public abstract bool LoadConfig();
     public virtual void Unload() { }
 
+    /// <summary>
+    /// 读取文本文件
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <param name="handler"></param>
+    /// <param name="split"></param>
+    /// <returns></returns>
     protected virtual bool ReadTxtConfig(string fileName, Action<string[]> handler, string split="\n")
     {
         Log.Info("ReadTxtConfig:" + fileName);
@@ -34,7 +41,12 @@ public abstract class ConfigBase
         textAsset = null;
         return true;
     }
-    //读取Xml配置
+    /// <summary>
+    /// 读取Xml配置
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <param name="handler"></param>
+    /// <returns></returns>
     public virtual bool ReadXmlConfig(string fileName, Action<XmlDocument> handler)
     {
         Log.Info("ReadXmlConfig:" + fileName);
@@ -55,8 +67,35 @@ public abstract class ConfigBase
         }
         return true;
     }
-
-    //读取CSV配置
+    /// <summary>
+    /// 加载xml文件
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public virtual XmlDocument LoadXML(string fileName)
+    {
+        Log.Info("LoadXML:" + fileName);
+        TextAsset textAsset = ResourceLoaderManager.Instance.LoadTextAsset(m_ConfigPathFileName + fileName);
+        if (textAsset == null)
+        {
+            Log.Error("ConfigBase::LoadXML - load error:" + m_ConfigPathFileName + fileName);
+            return null;
+        }
+        else
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(textAsset.text);
+            ResourceLoaderManager.Instance.UnloadAsset(textAsset);
+            textAsset = null;
+            return xmlDoc;
+        }
+    }
+    /// <summary>
+    /// 读取CSV配置
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <param name="handler"></param>
+    /// <returns></returns>
     public virtual bool ReadCsvConfig(string fileName, Action<LoadCSVData> handler)
     {
         Log.Info("ReadCsvConfig:" + fileName);

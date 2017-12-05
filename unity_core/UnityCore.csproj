@@ -31,6 +31,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DOTween, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>..\libs\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>..\libs\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>..\libs\DOTween50.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\libs\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -82,9 +95,43 @@
     <Compile Include="Classes\Socket\Token\UserTokenPools.cs" />
     <Compile Include="Classes\Timer\IntervalTime.cs" />
     <Compile Include="Classes\Timer\TimerManager.cs" />
+    <Compile Include="Classes\Transformer\ActionTransformer.cs" />
+    <Compile Include="Classes\Transformer\BlinkTransformer.cs" />
+    <Compile Include="Classes\Transformer\FlipTransformer.cs" />
+    <Compile Include="Classes\Transformer\MeshFadeTransformer.cs" />
+    <Compile Include="Classes\Transformer\MoveTransformer.cs" />
+    <Compile Include="Classes\Transformer\NullTransformer.cs" />
+    <Compile Include="Classes\Transformer\PlaceTransformer.cs" />
+    <Compile Include="Classes\Transformer\RepeatTransformer.cs" />
+    <Compile Include="Classes\Transformer\RotateTransformer.cs" />
+    <Compile Include="Classes\Transformer\ScaleTransformer.cs" />
+    <Compile Include="Classes\Transformer\SpeedTransformer.cs" />
+    <Compile Include="Classes\Transformer\Transformer.cs" />
+    <Compile Include="Classes\Transformer\TransformerID.cs" />
+    <Compile Include="Classes\Transformer\TransformerManager.cs" />
+    <Compile Include="Classes\Transformer\UIFadeTransformer.cs" />
+    <Compile Include="Classes\Transformer\UIImageFillTransformer.cs" />
+    <Compile Include="Classes\Transformer\VisibleTransformer.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopHorizontalScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopVerticalScrollRect.cs" />
+    <Compile Include="Classes\UI\Component\UIButton.cs" />
+    <Compile Include="Classes\UI\Component\UIComponentBase.cs" />
+    <Compile Include="Classes\UI\Component\UIDynamicText.cs" />
+    <Compile Include="Classes\UI\Component\UIImageNumber.cs" />
+    <Compile Include="Classes\UI\Component\UISimpleButton.cs" />
+    <Compile Include="Classes\UI\Component\UISpriteAnimation.cs" />
+    <Compile Include="Classes\UI\Component\UISwitchButton.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIFadeRepeatAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIImageFillAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIPressScaleAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIScaleAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UITextMeshFadeAction.cs" />
+    <Compile Include="Classes\UI\Effect\Panel\UIPanelAnimation.cs" />
+    <Compile Include="Classes\UI\Effect\Panel\UIPanelFade.cs" />
+    <Compile Include="Classes\UI\Effect\Panel\UIPanelMove.cs" />
+    <Compile Include="Classes\UI\Effect\Panel\UIPanelScale.cs" />
+    <Compile Include="Classes\UI\Effect\UIEffectTools.cs" />
     <Compile Include="Classes\Utils\BezierUtils.cs" />
     <Compile Include="Classes\Utils\ByteUtils.cs" />
     <Compile Include="Classes\Utils\ColorUtils.cs" />
@@ -92,6 +139,7 @@
     <Compile Include="Classes\Utils\DataUtils.cs" />
     <Compile Include="Classes\Utils\EncodingUtils.cs" />
     <Compile Include="Classes\Utils\FileUtils.cs" />
+    <Compile Include="Classes\Utils\GameObjectUtils.cs" />
     <Compile Include="Classes\Utils\IntUtils.cs" />
     <Compile Include="Classes\Utils\Math2DUtils.cs" />
     <Compile Include="Classes\Utils\MathUtils.cs" />
@@ -102,7 +150,9 @@
     <Compile Include="Classes\Utils\ZipUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DOTween.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)UnityCore.dll" "$(SolutionDir)\Assets\Plugins\lib"</PostBuildEvent>

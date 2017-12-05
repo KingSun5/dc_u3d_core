@@ -98,12 +98,12 @@ public class Math2DUtils
 	{
 		return i > 0 ? 1 : (i == 0 ? 0 : -1);
 	}
-	/**
-	* 获得象限：x右方向为0，顺时针转
-	* @param fDegree - 0～360度
-	* @param chunkNums - 划分几份
-	* @return 
-	*/
+	/// <summary>
+    /// 获得象限：x右方向为0，逆时针转
+	/// </summary>
+    /// <param name="fDegree">0～360</param>
+    /// <param name="chunkNums">划分几份</param>
+    /// <returns>[0,chunkNums)</returns>
 	static public uint GetQuadrant(float fDegree, uint chunkNums)
 	{
 		if (chunkNums == 0)
@@ -111,7 +111,7 @@ public class Math2DUtils
 			return 0;
 		}
 		float perAngle = 360.0f/chunkNums;
-		uint nFace = (uint)((fDegree+perAngle*0.5f+90)/perAngle)+1;//从1开始
+		uint nFace = (uint)((fDegree+perAngle*0.5f)/perAngle);//从0开始
 		nFace = nFace > chunkNums ? nFace-chunkNums : nFace;
 		return nFace;
 	}

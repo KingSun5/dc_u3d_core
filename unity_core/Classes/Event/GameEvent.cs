@@ -65,4 +65,9 @@ public struct GameEvent
         get { return m_type; }
         set { m_type = value; }
     }
+
+    public int length
+    {
+        get { return m_Length; }
+    }
 }
