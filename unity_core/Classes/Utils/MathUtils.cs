@@ -218,6 +218,14 @@ public class MathUtils
         return vec;
     }
     /// <summary>
+    /// 转换为水平方向
+    /// </summary>
+    public static Vector3 To2DHorizontal(Vector3 vec)
+    {
+        vec.z = 0;
+        return vec;
+    }
+    /// <summary>
     /// 水平距离
     /// </summary>
     public static float HorizontalDistance(Vector3 vec1, Vector3 vec2)
