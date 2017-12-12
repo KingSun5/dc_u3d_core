@@ -96,6 +96,11 @@
     <Compile Include="Classes\Timer\IntervalTime.cs" />
     <Compile Include="Classes\Timer\TimerManager.cs" />
     <Compile Include="Classes\Tools\Http\HttpClient.cs" />
+    <Compile Include="Classes\Tools\Tmx\TmxLayer.cs" />
+    <Compile Include="Classes\Tools\Tmx\TmxMap.cs" />
+    <Compile Include="Classes\Tools\Tmx\TmxObjectGroup.cs" />
+    <Compile Include="Classes\Tools\Tmx\TmxTileSet.cs" />
+    <Compile Include="Classes\Tools\Tmx\TsxMap.cs" />
     <Compile Include="Classes\Transformer\ActionTransformer.cs" />
     <Compile Include="Classes\Transformer\BlinkTransformer.cs" />
     <Compile Include="Classes\Transformer\FlipTransformer.cs" />
