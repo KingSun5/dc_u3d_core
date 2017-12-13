@@ -8,16 +8,16 @@ using System.Collections;
 /// </summary>
 public class Math2DUtils
 {
-	/**
-	 * 距离平方值
-	 */		
+	/// <summary>
+    /// 距离平方值
+	/// </summary>
 	public static float distance_square(float x1, float y1, float x2, float y2)
 	{
 		return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
 	}
-	/**
-	 * 距离
-	 */		
+	/// <summary>
+    /// 距离
+	/// </summary>
 	public static float distance(float x1, float y1, float x2, float y2)
 	{
 		return Mathf.Sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
@@ -53,15 +53,17 @@ public class Math2DUtils
         pt.y = Mathf.Sin(radian);
         return pt;
 	}
-	/**
-	 * 根据度数获得朝向
-	 * X轴正方向为1，顺时钟方向为加 
-	 * angle 度数(0-360)
-	 */		
-	public static uint getFace(float angle, uint chunkNums)
+	/// <summary>
+    /// 根据度数获得朝向
+    /// X轴正方向为1，顺时钟方向为加
+	/// </summary>
+    /// <param name="degree">度数(0-360)</param>
+	/// <param name="chunkNums">划分几份</param>
+	/// <returns></returns>
+	public static uint getFace(float degree, uint chunkNums)
 	{
 		float perAngle = 360/chunkNums;
-		uint nFace = (uint)((MathUtils.Cleap0_360(angle)+perAngle*0.5f)/perAngle)+1;//从1开始
+        uint nFace = (uint)((MathUtils.Cleap0_360(degree) + perAngle * 0.5f) / perAngle) + 1;//从1开始
 		nFace = nFace > chunkNums ? nFace-chunkNums : nFace;
 		return nFace;
 	}
@@ -73,27 +75,24 @@ public class Math2DUtils
 			angle = (face-1)*45;
 		return angle;
 	}
-	/**
-	 * 左边还是右边
-	 * @param num 度数
-	 * @return 0~89或271~360=1，90或270=0,91~269=-1
-	 * 
-	 */	
-	public static int getLeftOrRightFace(int num)
+    /// <summary>
+    /// 左边还是右边
+    /// </summary>
+    /// <param name="num">度数</param>
+    /// <returns>0~89或271~360=1，90或270=0,91~269=-1</returns>
+	public static int getLeftOrRightFace(int degree)
 	{
-		num = (int)MathUtils.Cleap0_360((float)num);
-		if(num >= 0 && num <= 90 || num >= 270 && num <= 360)
+        degree = (int)MathUtils.Cleap0_360((float)degree);
+        if (degree >= 0 && degree <= 90 || degree >= 270 && degree <= 360)
 		{
 			return 1;
 		}
 		
 		return -1;
 	}
-	/**
-	 * 获取左中右
-	 * @param i
-	 * @return 
-	 */		
+	/// <summary>
+    /// 获取左中右
+	/// </summary>
 	static public int getSide(float i)
 	{
 		return i > 0 ? 1 : (i == 0 ? 0 : -1);
@@ -112,16 +111,16 @@ public class Math2DUtils
 		}
 		float perAngle = 360.0f/chunkNums;
 		uint nFace = (uint)((fDegree+perAngle*0.5f)/perAngle);//从0开始
-		nFace = nFace > chunkNums ? nFace-chunkNums : nFace;
-		return nFace;
+		nFace = nFace >= chunkNums ? nFace-chunkNums : nFace;
+        return nFace;
 	}
-	/**
-	 * 获得所处区间 
-	 * @param cur 当前值
-	 * @param total 总值
-	 * @param section_count 区间总数
-	 * @return 1开头的区间值
-	 */		
+	/// <summary>
+    /// 获得所处区间 
+	/// </summary>
+    /// <param name="cur">当前值</param>
+    /// <param name="total">总值</param>
+    /// <param name="section_count">区间总数</param>
+    /// <returns>1开头的区间值</returns>
 	public static int getSection(float cur, float total, int section_count)
 	{
 		float perAngle = total/section_count;
@@ -129,9 +128,14 @@ public class Math2DUtils
 		sec = (int)MathUtils.Clamp(sec, 1, section_count);
 		return sec;
 	}
-	/**
-	 * 单位化
-	 */		
+	/// <summary>
+    /// 单位化
+	/// </summary>
+	/// <param name="x1"></param>
+	/// <param name="y1"></param>
+	/// <param name="x2"></param>
+	/// <param name="y2"></param>
+	/// <param name="power">长度</param>
 	public static Vector2 normalPoint(float x1, float y1, float x2, float y2, float power = 1)
 	{
 		Vector2 pt = new Vector2(x2-x1, y2-y1);
@@ -139,14 +143,12 @@ public class Math2DUtils
 		pt *= power;
 		return pt;
 	}
-
-	/**
-	 * 两个矩形是否相交 
-	 * @param rect1
-	 * @param rect2
-	 * @return 
-	 * 
-	 */		
+	/// <summary>
+    /// 两个矩形是否相交 
+	/// </summary>
+	/// <param name="rect1"></param>
+	/// <param name="rect2"></param>
+	/// <returns></returns>
 	public static bool intersectRect(Rect rect1,Rect rect2)
 	{
 		if ((rect1.xMax > rect2.xMin) &&
