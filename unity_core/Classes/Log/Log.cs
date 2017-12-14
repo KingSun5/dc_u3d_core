@@ -150,7 +150,7 @@ public class Log
         {
             st = st.Append(msg[i]);
         }
-        UnityEngine.Debug.LogException(new Exception(st.ToString()));
+        UnityEngine.Debug.LogError(st.ToString());
         if (MsgFun != null) MsgFun(st.ToString());
     }
     /// <summary>
@@ -161,7 +161,7 @@ public class Log
         if (LogLv > eLogLevel.LV_EXCEPTION) return;
         if (!EnableType[(int)eLogLevel.LV_EXCEPTION]) return;
 
-        UnityEngine.Debug.LogException(new Exception(msg));
+        UnityEngine.Debug.LogError(msg);
         if (MsgFun != null) MsgFun(msg);
     }
     /// <summary>
@@ -172,7 +172,7 @@ public class Log
         if (LogLv > eLogLevel.LV_EXCEPTION) return;
         if (!EnableType[(int)eLogLevel.LV_EXCEPTION]) return;
 
-        UnityEngine.Debug.LogException(e);
+        UnityEngine.Debug.LogError(e);
         if (MsgFun != null) MsgFun(e.Message);
     }
 }
