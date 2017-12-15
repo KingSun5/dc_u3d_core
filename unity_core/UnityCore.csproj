@@ -86,6 +86,7 @@
     <Compile Include="Classes\Resource\HttpDownloadManager.cs" />
     <Compile Include="Classes\Resource\MultyBuildManager.cs" />
     <Compile Include="Classes\Resource\ResourceLoaderManager.cs" />
+    <Compile Include="Classes\Script\GameObjectMouseScript.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBuffer.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBufferPools.cs" />
     <Compile Include="Classes\Socket\IDMap\SocketID.cs" />
