@@ -11,10 +11,22 @@ using UnityEngine.UI;
 /// </summary>
 public class UIProgressBar : UIComponentBase
 {
+    /// <summary>
+    /// 进度条方向
+    /// </summary>
     public eProgressType m_Type = eProgressType.Horizontal;
     
+    /// <summary>
+    /// 背景
+    /// </summary>
     public Image m_BGImg;
+    /// <summary>
+    /// 进度条
+    /// </summary>
     public Image m_ProgressImg;
+    /// <summary>
+    /// 进度
+    /// </summary>
     public Text  m_HpText;
 
     [SerializeField]
@@ -30,7 +42,7 @@ public class UIProgressBar : UIComponentBase
     /// </summary>
     private string m_InitText = "";
 
-	void Awake () 
+	public override void Awake () 
     {
         m_InitScale = m_ProgressImg.transform.localScale;
         m_InitText = "";
@@ -40,6 +52,7 @@ public class UIProgressBar : UIComponentBase
         }
 
         this.SetValue(m_Value);
+        base.Awake();
 	}
 
     private Vector3 tmpScale;
