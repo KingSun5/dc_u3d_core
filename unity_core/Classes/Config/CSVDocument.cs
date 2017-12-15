@@ -202,12 +202,18 @@ public class LoadCSVData
     public ColumElement getValue(int rowIndex, string columnName)
     {
         m_DefaultElement.Value = "";
-        int columnIndex = mDocumentColumNameList.IndexOf(columnName);
         if (rowIndex < 0 || mDocumentText.Count <= rowIndex)
+        {
+            Log.Warning("行数超出范围:" + rowIndex);
             return m_DefaultElement;
+        }
         List<string> tempStrList = mDocumentText[rowIndex];
+        int columnIndex = mDocumentColumNameList.IndexOf(columnName);
         if (columnIndex < 0 || tempStrList.Count <= columnIndex)
+        {
+            Log.Warning("未查找到列:" + columnName);
             return m_DefaultElement;
+        }
         m_DefaultElement.Value = tempStrList[columnIndex];
         return m_DefaultElement;
     }
