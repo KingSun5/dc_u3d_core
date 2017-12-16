@@ -34,7 +34,8 @@ public class UIProgressBar : UIComponentBase
     [SerializeField]
     protected int m_TotalValue = 1;
 
-    private Vector3 m_InitScale;
+    private bool m_Init = false;
+    private Vector3 m_InitScale = Vector3.one;
     /// <summary>
     /// 初始文本
     /// 1.如果有填，必须是String.Format格式
@@ -42,8 +43,9 @@ public class UIProgressBar : UIComponentBase
     /// </summary>
     private string m_InitText = "";
 
-	public override void Awake () 
+	void Start ()
     {
+        m_Init = true;
         m_InitScale = m_ProgressImg.transform.localScale;
         m_InitText = "";
         if (m_HpText != null)
@@ -52,16 +54,21 @@ public class UIProgressBar : UIComponentBase
         }
 
         this.SetValue(m_Value);
-        base.Awake();
 	}
 
     private Vector3 tmpScale;
     public void SetValue(int value)
     {
-        if (value < 0 || value > m_TotalValue) return;
-        if (m_ProgressImg == null) return;
-
         m_Value = value;
+
+        if (!m_Init || value < 0 || value > m_TotalValue) return;
+
+        if (m_ProgressImg == null)
+        {
+            Log.Warning("未设置进度条");
+            return;
+        }
+
         switch(m_Type)
         {
             case eProgressType.Horizontal:
