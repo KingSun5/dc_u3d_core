@@ -95,6 +95,7 @@
     <Compile Include="Classes\Socket\Token\UserToken.cs" />
     <Compile Include="Classes\Socket\Token\UserTokenPools.cs" />
     <Compile Include="Classes\Timer\IntervalTime.cs" />
+    <Compile Include="Classes\Timer\GameTime.cs" />
     <Compile Include="Classes\Timer\TimerManager.cs" />
     <Compile Include="Classes\Tools\Http\HttpClient.cs" />
     <Compile Include="Classes\Tools\Tmx\TmxLayer.cs" />

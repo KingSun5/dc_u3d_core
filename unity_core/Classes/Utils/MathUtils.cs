@@ -121,7 +121,7 @@ public class MathUtils
     /// 把一个数转换到0-360之间
 	/// </summary>
 	/// <param name="num"></param>
-	/// <returns></returns>
+    /// <returns>[0,360)</returns>
 	public static float Cleap0_360(float num)
 	{
 		num = num % 360;
@@ -171,17 +171,15 @@ public class MathUtils
 		return degree * (3.1415926f/180.0f);
 	}
 	/// <summary>
-    /// 投影到平面
+    /// 向量投影到平面
 	/// </summary>
-	Vector3 ProjectVectorOnPlane(Vector3 planeNormal, Vector3 vector)
+	/// <param name="planeNormal"></param>
+	/// <param name="vector"></param>
+	/// <returns>投影向量</returns>
+    public static Vector3 VectorProjectOnPlane(Vector3 planeNormal, Vector3 vector)
 	{
 		return vector - (Vector3.Dot(vector, planeNormal) * planeNormal);
-	}
-	
-	public static float HorizontalAngle (Vector3 direction) 
-	{
-		return Mathf.Atan2 (direction.x, direction.z) * Mathf.Rad2Deg;
-	}
+	}   
     /// <summary>
     /// 点到直线距离
     /// </summary>
@@ -189,7 +187,7 @@ public class MathUtils
     /// <param name="linePoint1">直线上一个点的坐标</param>
     /// <param name="linePoint2">直线上另一个点的坐标</param>
     /// <returns></returns>
-    public static float DisPoint2Line(Vector3 point, Vector3 linePoint1, Vector3 linePoint2)
+    public static float PointProjectLineDistance(Vector3 point, Vector3 linePoint1, Vector3 linePoint2)
     {
         Vector3 vec1 = point - linePoint1;
         Vector3 vec2 = linePoint2 - linePoint1;
@@ -197,6 +195,7 @@ public class MathUtils
         float dis = Mathf.Sqrt(Mathf.Pow(Vector3.Magnitude(vec1), 2) - Mathf.Pow(Vector3.Magnitude(vecProj), 2));
         return dis;
     }
+	
     /// <summary>
     /// 判断一个点是否在相机视锥体
     /// </summary>
@@ -210,7 +209,7 @@ public class MathUtils
         return true;
     }
     /// <summary>
-    /// 转换为水平方向
+    /// 转换为水平方向：忽视y轴
     /// </summary>
     public static Vector3 ToHorizontal(Vector3 vec)
     {
@@ -218,15 +217,7 @@ public class MathUtils
         return vec;
     }
     /// <summary>
-    /// 转换为水平方向
-    /// </summary>
-    public static Vector3 To2DHorizontal(Vector3 vec)
-    {
-        vec.z = 0;
-        return vec;
-    }
-    /// <summary>
-    /// 水平距离
+    /// 水平距离：忽视y轴
     /// </summary>
     public static float HorizontalDistance(Vector3 vec1, Vector3 vec2)
     {
@@ -235,7 +226,24 @@ public class MathUtils
         return (vec1 - vec2).magnitude;
     }
     /// <summary>
-    /// 两点垂直夹角
+    /// 转换为垂直方向：忽视z轴
+    /// </summary>
+    public static Vector3 ToVertical(Vector3 vec)
+    {
+        vec.z = 0;
+        return vec;
+    }
+    /// <summary>
+    /// 垂直距离：忽视z轴
+    /// </summary>
+    public static float VerticalDistance(Vector3 vec1, Vector3 vec2)
+    {
+        vec1.z = 0;
+        vec2.z = 0;
+        return (vec1 - vec2).magnitude;
+    }
+    /// <summary>
+    /// 两点垂直方向夹角
     /// </summary>
     public static float VerticalAngle(Vector3 pt1, Vector3 pt2)
     {
@@ -246,5 +254,15 @@ public class MathUtils
         { pt_top = pt2; pt_bottom = pt1; }
         Vector3 pt = new Vector3(pt_top.x, pt_bottom.y, pt_top.z);
         return Vector3.Angle((pt_bottom - pt_top), (pt - pt_top));
+    }
+    /// <summary>
+    /// 水平方向角度
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <returns>度数[0,360)</returns>
+    public static float HorizontalDegree(Vector3 direction)
+    {
+        float degree = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        return Cleap0_360(degree);
     }
 }
