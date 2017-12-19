@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Classes\Config\ConfigBase.cs" />
     <Compile Include="Classes\Config\CSVDocument.cs" />
+    <Compile Include="Classes\Core\BaseType.cs" />
     <Compile Include="Classes\Core\ByteArray.cs" />
     <Compile Include="Classes\Core\CommonValue.cs" />
     <Compile Include="Classes\Core\Singleton.cs" />
@@ -123,7 +124,7 @@
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopHorizontalScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopVerticalScrollRect.cs" />
-    <Compile Include="Classes\UI\Component\UIButton.cs" />
+    <Compile Include="Classes\UI\Component\UIImageButton.cs" />
     <Compile Include="Classes\UI\Component\UIComponentBase.cs" />
     <Compile Include="Classes\UI\Component\UIDynamicText.cs" />
     <Compile Include="Classes\UI\Component\UIImageNumber.cs" />

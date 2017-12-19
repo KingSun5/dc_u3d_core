@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
-/// UI按钮
+/// UI图片按钮
 /// @author hannibal
 /// @time 2016-2-25
 /// </summary>
 [RequireComponent(typeof(Image))]
-public class UIButton : UIComponentBase
+public class UIImageButton : UIComponentBase
 {
     public enum Status
     {
@@ -42,25 +42,24 @@ public class UIButton : UIComponentBase
 
     public override void RegisterEvent()
     {
-        this.AddUIEventListener(gameObject, eUIEventType.Click, OnClick);
+        this.AddUIEventListener(gameObject, eUIEventType.Down, OnMouseDown);
+        this.AddUIEventListener(gameObject, eUIEventType.Up, OnMouseUp);
+        this.AddUIEventListener(gameObject, eUIEventType.Exit, OnMouseUp);
     }
     public override void UnRegisterEvent()
     {
-        this.RemoveUIEventListener(gameObject, eUIEventType.Click, OnClick);
+        this.RemoveUIEventListener(gameObject, eUIEventType.Down, OnMouseDown);
+        this.RemoveUIEventListener(gameObject, eUIEventType.Up, OnMouseUp);
+        this.RemoveUIEventListener(gameObject, eUIEventType.Exit, OnMouseUp);
     }
 
-    void OnClick(UIEvent args)
+    void OnMouseDown(UIEvent args)
     {
-        switch (BtnStatus)
-        {
-            case Status.Normal:
-                SetStatus(Status.Select);
-                break;
-
-            case Status.Select:
-                SetStatus(Status.Normal);
-                break;
-        }
+        SetStatus(Status.Select);
+    }
+    void OnMouseUp(UIEvent args)
+    {
+        SetStatus(Status.Normal);
     }
 
     public void SetStatus(Status status)
