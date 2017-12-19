@@ -124,6 +124,7 @@
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopHorizontalScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopScrollRect.cs" />
     <Compile Include="Classes\UI\Component\LoopScrollRect\LoopVerticalScrollRect.cs" />
+    <Compile Include="Classes\UI\Component\UIImageList.cs" />
     <Compile Include="Classes\UI\Component\UIImageButton.cs" />
     <Compile Include="Classes\UI\Component\UIComponentBase.cs" />
     <Compile Include="Classes\UI\Component\UIDynamicText.cs" />
