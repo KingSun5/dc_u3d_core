@@ -130,7 +130,6 @@
     <Compile Include="Classes\UI\Component\UIDynamicText.cs" />
     <Compile Include="Classes\UI\Component\UIImageNumber.cs" />
     <Compile Include="Classes\UI\Component\UIProgressBar.cs" />
-    <Compile Include="Classes\UI\Component\UISimpleButton.cs" />
     <Compile Include="Classes\UI\Component\UISpriteAnimation.cs" />
     <Compile Include="Classes\UI\Component\UISwitchButton.cs" />
     <Compile Include="Classes\UI\Effect\Action\UIFadeRepeatAction.cs" />
