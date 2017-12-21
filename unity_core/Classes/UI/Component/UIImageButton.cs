@@ -24,6 +24,8 @@ public class UIImageButton : UIComponentBase
 
     private Image ImgComponent;
 
+    private bool m_IsVisible = true;
+
     public override void Awake()
     {
         if (NormalBtn == null) Log.Error("没有设置按钮基础状态");
@@ -55,11 +57,26 @@ public class UIImageButton : UIComponentBase
 
     void OnMouseDown(UIEvent args)
     {
+        if (!m_IsVisible) return;
         SetStatus(Status.Select);
     }
     void OnMouseUp(UIEvent args)
     {
+        if (!m_IsVisible) return;
         SetStatus(Status.Normal);
+    }
+
+    public override void SetVisible(bool is_Show)
+    {
+        m_IsVisible = is_Show;
+        if(!m_IsVisible)
+        {
+            this.SetStatus(Status.Disable);
+        }
+        else
+        {
+            this.SetStatus(Status.Normal);
+        }
     }
 
     public void SetStatus(Status status)

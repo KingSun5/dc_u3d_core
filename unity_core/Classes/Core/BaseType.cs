@@ -13,9 +13,10 @@ public struct Position2D
     {
         x = _x; y = _y;
     }
-    public void Set(int _x, int _y)
+    public Position2D Set(int _x, int _y)
     {
         x = _x; y = _y;
+        return this;
     }
     public static bool operator ==(Position2D pos1, Position2D pos2)
     {
