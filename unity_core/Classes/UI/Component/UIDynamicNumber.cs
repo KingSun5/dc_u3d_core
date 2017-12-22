@@ -67,11 +67,15 @@ public class UIDynamicNumber : UIComponentBase
 	{
 		m_Active = true;
 
+        if (to_value == m_EndValue)
+        {
+            if (on_end != null) on_end(m_TextComponent);
+            return;
+        }
+
 		m_OnComplete = on_end;
 		m_InitValue = m_Value;
 		m_EndValue = to_value;
-
-		if(to_value == m_Value)return;
 
 		m_StartTime = Time.realtimeSinceStartup;
 		if(!m_FixedTime)

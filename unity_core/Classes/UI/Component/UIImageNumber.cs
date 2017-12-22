@@ -15,7 +15,7 @@ public class UIImageNumber : UIComponentBase
     public Sprite[] m_TemplateSprite;
     public string m_TemplateText;
 
-    private string m_NumValue = "";
+    public string m_NumValue = "";
     private List<GameObject> m_NumImage = new List<GameObject>();
 
     public override void OnEnable()
@@ -47,7 +47,6 @@ public class UIImageNumber : UIComponentBase
             image.transform.SetParent(transform, false);
             image.transform.localScale = Vector3.one;
             image.gameObject.SetActive(true);
-            //if (image.sprite != null) SpritePools.Despawn(image.sprite);
             image.sprite = this.GetSpriteByNumber(arr[i]);
 		}
 	}
@@ -68,8 +67,6 @@ public class UIImageNumber : UIComponentBase
         {
             if (m_NumImage[i] == null)
                 continue;
-            //Image image = m_NumImage[i].GetComponent<Image>();
-            //if (image != null && image.sprite != null) SpritePools.Despawn(image.sprite);
             m_NumImage[i].gameObject.SetActive(false);
         }
 	}
