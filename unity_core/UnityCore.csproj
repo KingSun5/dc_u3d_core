@@ -127,7 +127,7 @@
     <Compile Include="Classes\UI\Component\UIImageList.cs" />
     <Compile Include="Classes\UI\Component\UIImageButton.cs" />
     <Compile Include="Classes\UI\Component\UIComponentBase.cs" />
-    <Compile Include="Classes\UI\Component\UIDynamicText.cs" />
+    <Compile Include="Classes\UI\Component\UIDynamicNumber.cs" />
     <Compile Include="Classes\UI\Component\UIImageNumber.cs" />
     <Compile Include="Classes\UI\Component\UIProgressBar.cs" />
     <Compile Include="Classes\UI\Component\UISpriteAnimation.cs" />
