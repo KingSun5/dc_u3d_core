@@ -19,7 +19,10 @@ public sealed class UIEventListener : EventTrigger
 		if (go == null)return null;
 
 		UIEventListener listener = go.GetComponent<UIEventListener>();
-		if (listener == null) listener = go.AddComponent<UIEventListener>();
+        if (listener == null)
+        {
+            listener = go.AddComponent<UIEventListener>();
+        }
 		return listener;
 	}
 
