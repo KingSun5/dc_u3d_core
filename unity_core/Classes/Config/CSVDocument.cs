@@ -11,9 +11,9 @@ using System.Resources;
 /// 读取CSV工具类  
 /// （需求：UTF-8格式）  
 /// </summary>  
-public class ColumElement 
+public struct CSVColumElement 
 {
-    public string elementValue;
+    private string elementValue;
     public string Value  
     {
         get{ return elementValue;}
@@ -30,44 +30,48 @@ public class ColumElement
     public uint ToUInt32() { return (uint)ToInt64(); }
     public float ToFloat() { return  (float)ToDecimal(); }
     public double ToDouble() { return (double)ToDecimal(); }
+    public CommonValue ToCValue() { return new CommonValue(elementValue); }
     public long ToInt64()
     {
-        try
+        if (string.IsNullOrEmpty(elementValue)) return 0;
+        long ret;
+        if (long.TryParse(elementValue, out ret))
+            return ret;
+        else
         {
-            return (elementValue.Length > 0) ? long.Parse(elementValue) : ((long)0);
-        }
-        catch (Exception e)
-        {
-            Log.Exception(e);
+            Log.Error("ToInt64类型转换错误:" + elementValue);
             return 0;
         }
     }
     public ulong ToUInt64()
     {
-        try
+        if (string.IsNullOrEmpty(elementValue)) return 0;
+        ulong ret;
+        if (ulong.TryParse(elementValue, out ret))
+            return ret;
+        else
         {
-            return (elementValue.Length > 0) ? ulong.Parse(elementValue) : ((long)0);
-        }
-        catch (Exception e)
-        {
-            Log.Exception(e);
+            Log.Error("ToUInt64类型转换错误:" + elementValue);
             return 0;
         }
     }
     public decimal ToDecimal()
     {
-        try
+        if (string.IsNullOrEmpty(elementValue)) return 0;
+        decimal ret;
+        if (decimal.TryParse(elementValue, out ret))
+            return ret;
+        else
         {
-            return (elementValue.Length > 0) ? decimal.Parse(elementValue) : ((long)0);
-        }
-        catch (Exception e)
-        {
-            Log.Exception(e);
+            Log.Error("ToUInt64类型转换错误:" + elementValue);
             return 0;
         }
     }
 }
-public class LoadCSVData 
+/// <summary>
+/// 读取csv文件
+/// </summary>
+public class CSVLoadData 
 {
     private List<List<string>> mDocumentText = null;
     private List<string> mDocumentColumNameList = null; //表头名称
@@ -198,8 +202,8 @@ public class LoadCSVData
         return mDocumentColumNameList.IndexOf(columnName);
     }
 	//读取第rowIndex行columnIndex列的数据
-    static ColumElement m_DefaultElement = new ColumElement();
-    public ColumElement getValue(int rowIndex, string columnName)
+    static CSVColumElement m_DefaultElement = new CSVColumElement();
+    public CSVColumElement getValue(int rowIndex, string columnName)
     {
         m_DefaultElement.Value = "";
         if (rowIndex < 0 || mDocumentText.Count <= rowIndex)
@@ -223,7 +227,7 @@ public class LoadCSVData
 /// 保存CSV工具类  
 /// （需求：UTF-8格式）  
 /// </summary>  
-public class SaveCSVData
+public class CSVSaveData
 {
     private int mCurrRowNum = 0; //当前保存的行数量
     private int mCurrColNum = 0;//当前保存的列数量

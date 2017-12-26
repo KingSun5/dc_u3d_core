@@ -96,7 +96,7 @@ public abstract class ConfigBase
     /// <param name="fileName"></param>
     /// <param name="handler"></param>
     /// <returns></returns>
-    public virtual bool ReadCsvConfig(string fileName, Action<LoadCSVData> handler)
+    public virtual bool ReadCsvConfig(string fileName, Action<CSVLoadData> handler)
     {
         Log.Info("ReadCsvConfig:" + fileName);
         TextAsset textAsset = ResourceLoaderManager.Instance.LoadTextAsset(m_ConfigPathFileName + fileName);
@@ -105,7 +105,7 @@ public abstract class ConfigBase
             Log.Error("ConfigBase::ReadCsvConfig - load error:" + m_ConfigPathFileName + fileName);
             return false;
         }
-        LoadCSVData csvDocument = new LoadCSVData();
+        CSVLoadData csvDocument = new CSVLoadData();
         csvDocument.Load(textAsset.text);
         handler(csvDocument);
         csvDocument.Clear();

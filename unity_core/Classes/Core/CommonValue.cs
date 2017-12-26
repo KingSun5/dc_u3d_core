@@ -20,7 +20,14 @@ public class CommonValue
     private CommonValueType m_ValueType;
     public string m_StrValue;
 
+    public CommonValue()
+    {
 
+    }
+    public CommonValue(Object val)
+    {
+        this.SetValue(val);
+    }
     public void Reset()
     {
         m_ValueType = CommonValueType.CommonValueType_None;
@@ -96,6 +103,7 @@ public class CommonValue
         }
         catch (Exception)
         {
+            Log.Error("ToDouble类型转换错误:" + m_StrValue);
             return 0;
         }
     }
@@ -117,6 +125,7 @@ public class CommonValue
         }
         catch (Exception)
         {
+            Log.Error("ToInt64类型转换错误:" + m_StrValue);
             return 0;
         }
     }
@@ -138,6 +147,7 @@ public class CommonValue
         }
         catch (Exception)
         {
+            Log.Error("ToUInt64类型转换错误:" + m_StrValue);
             return 0;
         }
     }
