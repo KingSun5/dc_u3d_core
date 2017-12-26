@@ -8,7 +8,7 @@ using System.Collections;
 /// </summary>
 public class IntervalTime
 {
-    private float m_interval_time;//毫秒
+    private float m_interval_time;
     private float m_now_time;
 
     public IntervalTime()
