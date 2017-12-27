@@ -42,7 +42,7 @@ public class GameObjectUtils
         else
             obj.position = Vector3.zero;
         obj.localScale = Vector3.one;
-        obj.Rotate(Vector3.zero);
+        obj.localRotation = Quaternion.identity;
     }
     /// <summary>
     /// 设置对象层级
