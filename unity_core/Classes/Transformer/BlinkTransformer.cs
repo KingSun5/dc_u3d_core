@@ -8,10 +8,10 @@ using System.Collections;
 /// </summary>
 public class BlinkTransformer : Transformer 
 {
-    public bool m_boVisible;       //变换完成后目标可视状态
-    public bool m_defaultVisible;  //默认是否可见
-    public float m_switchTiime;    //变换时间
-    public float m_lastSwitchTime;
+    private bool m_boVisible;       //变换完成后目标可视状态
+    private bool m_defaultVisible;  //默认是否可见
+    private float m_switchTiime;    //变换时间
+    private float m_lastSwitchTime;
 
     /// <summary>
     /// 构建器

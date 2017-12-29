@@ -88,6 +88,7 @@
     <Compile Include="Classes\Resource\MultyBuildManager.cs" />
     <Compile Include="Classes\Resource\ResourceLoaderManager.cs" />
     <Compile Include="Classes\Script\GameObjectMouseScript.cs" />
+    <Compile Include="Classes\Script\SpriteFadeScript.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBuffer.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBufferPools.cs" />
     <Compile Include="Classes\Socket\IDMap\SocketID.cs" />
@@ -109,12 +110,14 @@
     <Compile Include="Classes\Transformer\FlipTransformer.cs" />
     <Compile Include="Classes\Transformer\MeshFadeTransformer.cs" />
     <Compile Include="Classes\Transformer\MoveTransformer.cs" />
+    <Compile Include="Classes\Transformer\Move2DTransformer.cs" />
     <Compile Include="Classes\Transformer\NullTransformer.cs" />
     <Compile Include="Classes\Transformer\PlaceTransformer.cs" />
     <Compile Include="Classes\Transformer\RepeatTransformer.cs" />
-    <Compile Include="Classes\Transformer\RotateTransformer.cs" />
+    <Compile Include="Classes\Transformer\Rotate2DTransformer.cs" />
     <Compile Include="Classes\Transformer\ScaleTransformer.cs" />
     <Compile Include="Classes\Transformer\SpeedTransformer.cs" />
+    <Compile Include="Classes\Transformer\SpriteFadeTransformer.cs" />
     <Compile Include="Classes\Transformer\Transformer.cs" />
     <Compile Include="Classes\Transformer\TransformerID.cs" />
     <Compile Include="Classes\Transformer\TransformerManager.cs" />

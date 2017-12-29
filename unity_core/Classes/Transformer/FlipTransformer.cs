@@ -8,8 +8,8 @@ using System.Collections;
 /// </summary>
 public class FlipTransformer : Transformer 
 {
-    bool m_FlipX;
-    bool m_FlipY;
+    private bool m_FlipX;
+    private bool m_FlipY;
 
     public static FlipTransformer visible(GameObject target, bool flipX, bool flipY)
     {

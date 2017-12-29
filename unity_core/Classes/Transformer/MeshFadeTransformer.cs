@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
-/**
- * mesh渐隐变换器
- */
+
+/// <summary>
+/// mesh渐隐变换器
+/// TODO:受材质影响比较，此功能暂时不能用
+/// @author hannibal
+/// @time 2017-12-29
+/// </summary>
 public class MeshFadeTransformer : Transformer
 {
-    public int m_nStartType;
-    public float m_StartAlpha;
-    public float m_SpeedAlpha;
-    public float m_TargetAlpha;
-    public Renderer m_MeshRender;
-    public Color m_InitColor = Color.white;
+    private int m_nStartType;
+    private float m_StartAlpha;
+    private float m_SpeedAlpha;
+    private float m_TargetAlpha;
+    private Renderer m_MeshRender;
+    private Color m_InitColor = Color.white;
 
     public static MeshFadeTransformer FadeTo(GameObject target, float destAlpha, float time)
     {

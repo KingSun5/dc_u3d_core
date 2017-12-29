@@ -6,7 +6,7 @@ using System;
  */
 public class ActionTransformer : Transformer
 {
-    public Action m_CallBack;
+    private Action m_CallBack;
 
     public static ActionTransformer FadeTo(GameObject target, Action callBack, float time)
     {

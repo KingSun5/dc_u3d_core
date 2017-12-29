@@ -5,8 +5,8 @@ using System.Collections;
  */
 public class RepeatTransformer : Transformer
 {
-    public int m_nRunTwice;
-    public int m_nMaxTwice;
+    private int m_nRunTwice;
+    private int m_nMaxTwice;
     public static RepeatTransformer repeat(GameObject target, int twice)
     {
         RepeatTransformer transformer = new RepeatTransformer();

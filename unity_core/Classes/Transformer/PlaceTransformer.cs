@@ -8,7 +8,7 @@ using System.Collections;
 /// </summary>
 public class PlaceTransformer : SpeedTransformer 
 {
-    Vector3 m_position;
+    private Vector3 m_position;
 
     public static PlaceTransformer visible(GameObject target, Vector3 pos)
     {

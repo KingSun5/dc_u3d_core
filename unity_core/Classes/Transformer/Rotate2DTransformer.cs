@@ -2,16 +2,16 @@
 using System.Collections;
 
 /// <summary>
-/// 旋转变换器
+/// 2d旋转变换器
 /// @author hannibal
 /// @time 2016-2-14
 /// </summary>
-public class RotateTransformer : Transformer 
+public class Rotate2DTransformer : Transformer 
 {
-    public int   m_nStartType;
-    public float m_fStartDegree;
-    public float m_fTargetDegree;
-    public float m_fSpeed;
+    private int m_nStartType;
+    private float m_fStartDegree;
+    private float m_fTargetDegree;
+    private float m_fSpeed;
 
     /// <summary>
     /// 绝对旋转
@@ -20,9 +20,9 @@ public class RotateTransformer : Transformer
     /// <param name="degree">目标角度</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
-    public static RotateTransformer rotateTo(GameObject target, float degree, float time)
+    public static Rotate2DTransformer rotateTo(GameObject target, float degree, float time)
     {
-        RotateTransformer transformer = new RotateTransformer();
+        Rotate2DTransformer transformer = new Rotate2DTransformer();
         transformer.m_nStartType = 0;
         transformer.m_fTargetDegree = degree;
         transformer.m_fTransformTime = time;
@@ -36,18 +36,18 @@ public class RotateTransformer : Transformer
     /// <param name="speed">速度：每秒变换角度</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
-    public static RotateTransformer rotateBy(GameObject target, float speed, float time)
+    public static Rotate2DTransformer rotateBy(GameObject target, float speed, float time)
     {
-        RotateTransformer transformer = new RotateTransformer();
+        Rotate2DTransformer transformer = new Rotate2DTransformer();
         transformer.m_nStartType = 1;
         transformer.m_fSpeed = speed;
         transformer.m_fTransformTime = time;
         transformer.target = target;
         return transformer;
     }
-    public RotateTransformer()
+    public Rotate2DTransformer()
     {
-        m_Type = eTransformerID.Rotate;
+        m_Type = eTransformerID.Rotate2D;
     }
     public override void OnTransformStarted()
     {
