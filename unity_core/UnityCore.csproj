@@ -87,7 +87,11 @@
     <Compile Include="Classes\Resource\HttpDownloadManager.cs" />
     <Compile Include="Classes\Resource\MultyBuildManager.cs" />
     <Compile Include="Classes\Resource\ResourceLoaderManager.cs" />
+    <Compile Include="Classes\Script\AutoDestroyScript.cs" />
+    <Compile Include="Classes\Script\CameraAdjustSize.cs" />
+    <Compile Include="Classes\Script\DontDestroyOnLoadScript.cs" />
     <Compile Include="Classes\Script\GameObjectMouseScript.cs" />
+    <Compile Include="Classes\Script\ParticleAutoDestroyScript.cs" />
     <Compile Include="Classes\Script\SpriteFadeScript.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBuffer.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBufferPools.cs" />
