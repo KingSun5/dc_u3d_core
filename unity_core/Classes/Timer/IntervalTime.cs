@@ -13,7 +13,6 @@ public class IntervalTime
 
     public IntervalTime()
     {
-        m_now_time = 0;
     }
     /// <summary>
     /// 初始化定时器
@@ -22,6 +21,7 @@ public class IntervalTime
     /// <param name="start">是否第一帧开始执行</param>
     public void Init(float interval, bool first_frame = false)
     {
+        m_now_time = 0.0f;
         m_interval_time = interval;
         if (first_frame) m_now_time = m_interval_time;
     }

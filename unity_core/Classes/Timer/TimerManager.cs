@@ -41,9 +41,13 @@ public class TimerManager : Singleton<TimerManager>
     /// <param name="rate">触发频率(单位秒)</param>
     /// <param name="callBack">触发回调函数</param>
     /// <returns>新定时器id</returns>
-    public int AddTimer(float rate, Action callBack)
+    public int AddLoop(float rate, Action callBack)
     {
         return AddTimer(rate, 0, callBack);
+    }
+    public int AddOnce(float rate, Action callBack)
+    {
+        return AddTimer(rate, 1, callBack);
     }
     /// <summary>
     /// 增加定时器，可以指定循环次数
