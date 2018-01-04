@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// mesh渐隐变换器
-/// TODO:受材质影响比较，此功能暂时不能用
+/// 1.受材质影响比较，此功能需要材质具有_TintColor项
 /// @author hannibal
 /// @time 2017-12-29
 /// </summary>

@@ -80,8 +80,6 @@ public class Transformer
     //使用变换器管理器将能够以统一的方式对所有任意时刻产生的变换器进行自动
     //化的更新以及生命期管理，变换器管理器能够在变换器运行完成后自动尝试移
     //除此变换器。使用变换器时仅需要调用变换器的更新函数即可实现自动更新，
-    //如果使用SG2DEX::Application框架，则无需手动调用变换管理器的更新，
-    //Application在进行帧更新前会自动更新变换管理器；
     public void start(float timeOffset = 0, bool autoManage = true)
     {
         m_boEnded = false;
