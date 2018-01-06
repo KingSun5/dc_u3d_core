@@ -25,4 +25,5 @@ public enum eTransformerID
     UIFade,
     MeshFade,
     SpriteFade,
+    Spring,     //弹簧效果
 }

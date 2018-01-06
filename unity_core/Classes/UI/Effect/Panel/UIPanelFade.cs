@@ -27,8 +27,6 @@ public class UIPanelFade : UIPanelAnimation
         {
             m_CanvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
-        m_CurTick = Time.time + m_Delay;
-        m_CanvasGroup.alpha = m_FromAlpha;
     }
 
     public override void Start()
@@ -47,11 +45,15 @@ public class UIPanelFade : UIPanelAnimation
 
     public override void OnEnable()
     {
+        base.OnEnable();
+        m_CurTick = Time.time + m_Delay;
+        m_CanvasGroup.alpha = m_FromAlpha;
     }
 
     public override void OnDisable()
     {
         Reset();
+        base.OnDisable();
     }
 
     public void Reset()

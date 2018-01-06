@@ -8,13 +8,13 @@ using System.Collections;
 /// </summary>
 public class Move2DTransformer : Transformer
 {
-    public int m_nStartType;
-    public float m_fStartX;
-    public float m_fStartY;
-    public float m_fSpeedX;
-    public float m_fSpeedY;
-    public float m_fTargetX;
-    public float m_fTargetY;
+    private int m_nStartType;
+    private float m_fStartX;
+    private float m_fStartY;
+    private float m_fSpeedX;
+    private float m_fSpeedY;
+    private float m_fTargetX;
+    private float m_fTargetY;
 
     /// <summary>
     /// 移动到目标点

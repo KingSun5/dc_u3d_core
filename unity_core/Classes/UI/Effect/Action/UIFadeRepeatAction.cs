@@ -6,10 +6,19 @@ using System.Collections;
 /// @author hannibal
 /// @time 2016-3-26
 /// </summary>
-public class UIFadeRepeatAction : MonoBehaviour 
+public class UIFadeRepeatAction : MonoBehaviour
 {
+    /// <summary>
+    /// 渐变到
+    /// </summary>
     public float m_ToAlpha = 0;
+    /// <summary>
+    /// 渐变速度
+    /// </summary>
     public float m_Duration = 1;
+    /// <summary>
+    /// 是否循环
+    /// </summary>
     public bool m_Repeat = true;
 
     private bool m_Active = false;

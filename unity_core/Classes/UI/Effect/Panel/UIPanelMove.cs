@@ -17,9 +17,6 @@ public class UIPanelMove : UIPanelAnimation
     private RectTransform rectTransform;
     public override void Awake()
     {
-        rectTransform = gameObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = m_FromPositon;
-        m_CurTick = Time.time + m_Delay;
     }
 
     public override void Start()
@@ -38,11 +35,16 @@ public class UIPanelMove : UIPanelAnimation
 
     public override void OnEnable()
     {
+        base.OnEnable();
+        rectTransform = gameObject.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = m_FromPositon;
+        m_CurTick = Time.time + m_Delay;
     }
 
     public override void OnDisable()
     {
         Reset();
+        base.OnDisable();
     }
 
     public void Reset()

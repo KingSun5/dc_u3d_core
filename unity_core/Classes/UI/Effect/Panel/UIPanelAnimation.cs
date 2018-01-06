@@ -25,7 +25,6 @@ public class UIPanelAnimation : MonoBehaviour
 
     public virtual void Awake()
     {
-        m_Running = false;
     }
 
     public virtual void Start()
@@ -38,6 +37,7 @@ public class UIPanelAnimation : MonoBehaviour
 
     public virtual void OnEnable()
     {
+        m_Running = false;
     }
 
     public virtual void OnDisable()

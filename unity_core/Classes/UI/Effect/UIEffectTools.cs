@@ -90,5 +90,29 @@ public class UIEffectTools
                 (c as Graphic).DOKill();
             }
         }
-    } 
+    }
+    //～～～～～～～～～～～～～～～～～～～～～～～缩放动画~～～～～～～～～～～～～～～～～～～～～～～～//
+    public static void ScaleTo(GameObject go, float time, System.Action fun = null, float scale = 1)
+    {
+        if (go == null)
+        {
+            fun();
+            return;
+        }
+        go.transform.DOScale(scale * Vector3.one, time).OnComplete(() =>
+        {
+            if (fun != null)
+            {
+                fun();
+            }
+        });
+    }
+    public static void ScaleStop(GameObject go)
+    {
+        if (go == null)
+        {
+            return;
+        }
+        go.transform.DOKill();
+    }
 }

@@ -17,8 +17,6 @@ public class UIPanelScale : UIPanelAnimation
 
     public override void Awake()
     {
-        gameObject.transform.localScale = m_FromScale;
-        m_CurTick = Time.time + m_Delay;
     }
 
     public override void Start()
@@ -37,11 +35,15 @@ public class UIPanelScale : UIPanelAnimation
 
     public override void OnEnable()
     {
+        base.OnEnable();
+        gameObject.transform.localScale = m_FromScale;
+        m_CurTick = Time.time + m_Delay;
     }
 
     public override void OnDisable()
     {
         Reset();
+        base.OnDisable();
     }
 
     public void Reset()
