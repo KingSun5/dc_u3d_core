@@ -11,13 +11,14 @@ using System.Collections;
 public class UIImageList : UIComponentBase
 {
     public Sprite[] ImageList;
+    public bool m_SetNativeSize = true;
 
-    private Image ImgComponent;
+    private Image m_ImgComponent;
 
     public override void Awake()
     {
         if (ImageList == null || ImageList.Length == 0) Log.Error("没有设置基础数据");
-        ImgComponent = GetComponent<Image>();
+        m_ImgComponent = GetComponent<Image>();
     }
 
     public override void OnEnable()
@@ -33,11 +34,13 @@ public class UIImageList : UIComponentBase
     {
         if (index < 0 || index >= ImageList.Length)
         {
-            ImgComponent.sprite = null;
+            m_ImgComponent.sprite = null;
+            Log.Warning("图片索引超出范围:" + index);
         }
         else
         {
-            ImgComponent.sprite = ImageList[index];
+            m_ImgComponent.sprite = ImageList[index];
+            if (m_SetNativeSize) m_ImgComponent.SetNativeSize();
         }
     }
 }

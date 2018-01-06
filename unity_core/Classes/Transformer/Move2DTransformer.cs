@@ -15,6 +15,7 @@ public class Move2DTransformer : Transformer
     private float m_fSpeedY;
     private float m_fTargetX;
     private float m_fTargetY;
+    private bool m_isWorld;
 
     /// <summary>
     /// 移动到目标点
@@ -24,13 +25,14 @@ public class Move2DTransformer : Transformer
     /// <param name="y">目标位置：y</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
-    public static Move2DTransformer moveTo(GameObject target, float x, float y, float time)
+    public static Move2DTransformer moveTo(GameObject target, float x, float y, float time, bool is_world = false)
     {
         Move2DTransformer transformer = new Move2DTransformer();
         transformer.m_nStartType = 0;
         transformer.m_fTargetX = x;
         transformer.m_fTargetY = y;
         transformer.m_fTransformTime = time;
+        transformer.m_isWorld = is_world;
         transformer.target = target;
         return transformer;
     }
@@ -42,7 +44,7 @@ public class Move2DTransformer : Transformer
     /// <param name="relative_y">y方向移动量</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
-    public static Move2DTransformer moveBy(GameObject target, float relative_x, float relative_y, float time)
+    public static Move2DTransformer moveBy(GameObject target, float relative_x, float relative_y, float time, bool is_world = false)
     {
         Vector3 position = target.transform.localPosition;
         Move2DTransformer transformer = new Move2DTransformer();
@@ -50,6 +52,7 @@ public class Move2DTransformer : Transformer
         transformer.m_fTargetX = position.x + relative_x;
         transformer.m_fTargetY = position.y + relative_y;
         transformer.m_fTransformTime = time;
+        transformer.m_isWorld = is_world;
         transformer.target = target;
         return transformer;
     }
@@ -61,13 +64,14 @@ public class Move2DTransformer : Transformer
     /// <param name="speedY">y方向速度</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
-    public static Move2DTransformer moveSpeed(GameObject target, float speedX, float speedY, float time)
+    public static Move2DTransformer moveSpeed(GameObject target, float speedX, float speedY, float time, bool is_world = false)
     {
         Move2DTransformer transformer = new Move2DTransformer();
         transformer.m_nStartType = 1;
         transformer.m_fSpeedX = speedX;
         transformer.m_fSpeedY = speedY;
         transformer.m_fTransformTime = time;
+        transformer.m_isWorld = is_world;
         transformer.target = target;
         return transformer;
     }
@@ -78,7 +82,7 @@ public class Move2DTransformer : Transformer
     public override void OnTransformStarted()
     {
         //获得当前对象的缩放
-        Vector3 position = target.transform.localPosition;
+        Vector3 position = m_isWorld ? target.transform.position : target.transform.localPosition;
         m_fStartX = position.x;
         m_fStartY = position.y;
         if (m_nStartType == 0)
@@ -95,14 +99,21 @@ public class Move2DTransformer : Transformer
     }
     public override void runTransform(float currTime)
     {
+        Vector3 pos = new Vector3();
         if (currTime >= m_fEndTime)
         {
-            target.transform.localPosition = new Vector3(m_fTargetX, m_fTargetY, target.transform.localPosition.z);
+            pos.x = m_fTargetX;
+            pos.y = m_fTargetY;
         }
         else
         {
             float timeElapased = currTime - m_fStartTime;
-            target.transform.localPosition = new Vector3(m_fStartX + m_fSpeedX * timeElapased, m_fStartY + m_fSpeedY * timeElapased, target.transform.localPosition.z);
+            pos.x = m_fStartX + m_fSpeedX * timeElapased;
+            pos.y = m_fStartY + m_fSpeedY * timeElapased;
         }
+        if (m_isWorld)
+            target.transform.position = new Vector3(pos.x, pos.y, target.transform.position.z);
+        else
+            target.transform.localPosition = new Vector3(pos.x, pos.y, target.transform.localPosition.z);
     }
 }

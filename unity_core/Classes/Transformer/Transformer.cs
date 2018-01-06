@@ -106,7 +106,10 @@ public class Transformer
 	{
 		if (!m_boEnded && currTime >= m_fStartTime)//支持延迟启动
 		{
-			runTransform(currTime);
+            if (target != null)
+            {
+                runTransform(currTime);
+            }
 			if (currTime >= m_fEndTime)
 			{
 				m_boEnded = true;

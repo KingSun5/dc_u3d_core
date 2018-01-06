@@ -15,6 +15,7 @@ public class UIImageNumber : UIComponentBase
     public Sprite[] m_TemplateSprite;
     public string m_TemplateText;
 
+    public bool m_SetNativeSize = true;
     public string m_NumValue = "";
     private List<GameObject> m_NumImage = new List<GameObject>();
 
@@ -48,6 +49,7 @@ public class UIImageNumber : UIComponentBase
             image.transform.localScale = Vector3.one;
             image.gameObject.SetActive(true);
             image.sprite = this.GetSpriteByNumber(arr[i]);
+            if (m_SetNativeSize) image.SetNativeSize();
 		}
 	}
 

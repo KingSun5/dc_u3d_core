@@ -20,14 +20,14 @@ public class UISwitchButton : UIComponentBase
     
     public Sprite NormalBtn;
     public Sprite SelectBtn;
+    public bool m_SetNativeSize = true;
 
-
-    private Image ImgComponent;
+    private Image m_ImgComponent;
 
     public override void Awake()
     {
         if (NormalBtn == null) Log.Error("没有设置按钮基础状态");
-        ImgComponent = GetComponent<Image>();
+        m_ImgComponent = GetComponent<Image>();
     }
 
     public override void OnEnable()
@@ -69,12 +69,20 @@ public class UISwitchButton : UIComponentBase
         switch (status)
         {
             case Status.Normal:
-                if (NormalBtn != null) ImgComponent.sprite = NormalBtn;
+                if (NormalBtn != null)
+                {
+                    m_ImgComponent.sprite = NormalBtn;
+                    if (m_SetNativeSize) m_ImgComponent.SetNativeSize();
+                }
                 BtnStatus = status;
                 break;
 
             case Status.Select:
-                if (SelectBtn != null) ImgComponent.sprite = SelectBtn;
+                if (SelectBtn != null)
+                {
+                    m_ImgComponent.sprite = SelectBtn;
+                    if (m_SetNativeSize) m_ImgComponent.SetNativeSize();
+                }
                 BtnStatus = status;
                 break;
         }

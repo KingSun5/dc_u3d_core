@@ -22,6 +22,7 @@ public class UISpriteAnimation : UIComponentBase
     public bool Foward = true;
     public bool AutoPlay = false;
     public bool Loop = false;
+    public bool m_SetNativeSize = true;
 
     public override void Awake()
     {
@@ -43,7 +44,7 @@ public class UISpriteAnimation : UIComponentBase
     private void SetSprite(int idx)
     {
         ImageSource.sprite = SpriteFrames[idx];
-//      ImageSource.SetNativeSize();
+        if(m_SetNativeSize)ImageSource.SetNativeSize();
     }
 
     public void Play()
