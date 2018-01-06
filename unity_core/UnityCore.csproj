@@ -85,6 +85,11 @@
     <Compile Include="Classes\Pools\ObjectPools.cs" />
     <Compile Include="Classes\Pools\SpritePools.cs" />
     <Compile Include="Classes\Resource\HttpDownloadManager.cs" />
+    <Compile Include="Classes\Resource\IDmap\ResourceID.cs" />
+    <Compile Include="Classes\Resource\Info\ResourceInfo.cs" />
+    <Compile Include="Classes\Resource\Load\ResourceLoadAsyncThread.cs" />
+    <Compile Include="Classes\Resource\Load\ResourceLoadSyncThread.cs" />
+    <Compile Include="Classes\Resource\Load\ResourceLoadThread.cs" />
     <Compile Include="Classes\Resource\MultyBuildManager.cs" />
     <Compile Include="Classes\Resource\ResourceLoaderManager.cs" />
     <Compile Include="Classes\Script\AutoDestroyScript.cs" />
@@ -121,6 +126,7 @@
     <Compile Include="Classes\Transformer\Rotate2DTransformer.cs" />
     <Compile Include="Classes\Transformer\ScaleTransformer.cs" />
     <Compile Include="Classes\Transformer\SpeedTransformer.cs" />
+    <Compile Include="Classes\Transformer\SpringTransformer.cs" />
     <Compile Include="Classes\Transformer\SpriteFadeTransformer.cs" />
     <Compile Include="Classes\Transformer\Transformer.cs" />
     <Compile Include="Classes\Transformer\TransformerID.cs" />
