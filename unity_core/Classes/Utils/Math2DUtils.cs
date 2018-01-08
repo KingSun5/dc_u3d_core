@@ -42,10 +42,21 @@ public class Math2DUtils
     {
         return Mathf.Atan2(y2 - y1, x2 - x1);
     }
+    /// <summary>
+    /// 方向转弧度
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
     public static float Point2Radians(float x, float y)
     {
         return Mathf.Atan2(y, x);
     }
+    /// <summary>
+    /// 弧度转方向
+    /// </summary>
+    /// <param name="radian"></param>
+    /// <returns></returns>
 	public static Vector2 Radians2Point(float radian)
 	{
         Vector2 pt = new Vector2();

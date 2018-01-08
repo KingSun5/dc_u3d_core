@@ -103,6 +103,15 @@ public class MathUtils
         float z = (1 - 2 * Random.value) * length;
         return new Vector3(x, y, z);
     }
+    /// <summary>
+    /// 百分之五十概率
+    /// </summary>
+    /// <returns></returns>
+    public static bool Rand_HalfPercent()
+    {
+        if (Rand_Sign() == 1) return true;
+        return false;
+    }
 	/// <summary>
     /// 限制范围
 	/// </summary>
