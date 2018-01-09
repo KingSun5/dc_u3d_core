@@ -12,8 +12,8 @@ using DG.Tweening;
 /// </summary>
 public class UIPanelScale : UIPanelAnimation
 {
-    public Vector3 m_FromScale;
-    public Vector3 m_ToScale;
+    public Vector2 m_FromScale;
+    public Vector2 m_ToScale;
 
     public override void Awake()
     {
@@ -36,7 +36,7 @@ public class UIPanelScale : UIPanelAnimation
     public override void OnEnable()
     {
         base.OnEnable();
-        gameObject.transform.localScale = m_FromScale;
+        gameObject.transform.localScale = new Vector3(m_FromScale.x, m_FromScale.y, 1);
         m_CurTick = Time.time + m_Delay;
     }
 
@@ -49,12 +49,12 @@ public class UIPanelScale : UIPanelAnimation
     public void Reset()
     {
         m_CurTick = Time.time + m_Delay;
-        gameObject.transform.localScale = m_FromScale;
+        gameObject.transform.localScale = new Vector3(m_FromScale.x, m_FromScale.y, 1);
     }
 
     public void PlayForward()
     {
-        gameObject.transform.DOScale(m_ToScale, m_Duration).SetEase(m_easeType);
+        gameObject.transform.DOScale(new Vector3(m_ToScale.x, m_ToScale.y, 1), m_Duration).SetEase(m_easeType);
     }
 }
 
