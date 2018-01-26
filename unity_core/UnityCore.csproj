@@ -97,6 +97,7 @@
     <Compile Include="Classes\Script\DontDestroyOnLoadScript.cs" />
     <Compile Include="Classes\Script\GameObjectMouseScript.cs" />
     <Compile Include="Classes\Script\ParticleAutoDestroyScript.cs" />
+    <Compile Include="Classes\Script\SpriteAnimationScript.cs" />
     <Compile Include="Classes\Script\SpriteFadeScript.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBuffer.cs" />
     <Compile Include="Classes\Socket\Buffer\SendRecvBufferPools.cs" />
@@ -147,6 +148,8 @@
     <Compile Include="Classes\UI\Component\UISwitchButton.cs" />
     <Compile Include="Classes\UI\Effect\Action\UIFadeRepeatAction.cs" />
     <Compile Include="Classes\UI\Effect\Action\UIImageFillAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIMoveOffsetAction.cs" />
+    <Compile Include="Classes\UI\Effect\Action\UIMoveTargetAction.cs" />
     <Compile Include="Classes\UI\Effect\Action\UIPressScaleAction.cs" />
     <Compile Include="Classes\UI\Effect\Action\UIScaleAction.cs" />
     <Compile Include="Classes\UI\Effect\Action\UITextMeshFadeAction.cs" />
@@ -161,6 +164,7 @@
     <Compile Include="Classes\Utils\CommonUtils.cs" />
     <Compile Include="Classes\Utils\DataUtils.cs" />
     <Compile Include="Classes\Utils\EncodingUtils.cs" />
+    <Compile Include="Classes\Utils\FileDlgUtils.cs" />
     <Compile Include="Classes\Utils\FileUtils.cs" />
     <Compile Include="Classes\Utils\GameObjectUtils.cs" />
     <Compile Include="Classes\Utils\IntUtils.cs" />
