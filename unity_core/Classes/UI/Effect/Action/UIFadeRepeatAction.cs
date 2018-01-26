@@ -36,13 +36,13 @@ public class UIFadeRepeatAction : MonoBehaviour
     void OnFadeOut()
     {
         if (!m_Active) return;
-        UIEffectTools.FadeIn(gameObject, m_Duration, OnFadeIn, 1);
+        UIEffectTools.FadeIn(gameObject, m_Duration, 1, OnFadeIn);
     }
 
     void OnFadeIn()
     {
         if (!m_Active) return;
-        UIEffectTools.FadeOut(gameObject, m_Duration, OnFadeOut, m_ToAlpha);
+        UIEffectTools.FadeOut(gameObject, m_Duration, m_ToAlpha, OnFadeOut);
     }
 
     public void Start()
@@ -57,6 +57,6 @@ public class UIFadeRepeatAction : MonoBehaviour
         if (!m_Active) return;
         m_Active = false;
         UIEffectTools.FadeStop(gameObject);
-        UIEffectTools.FadeIn(gameObject, 0, null, alpha);
+        UIEffectTools.FadeIn(gameObject, 0, alpha, null);
     }
 }

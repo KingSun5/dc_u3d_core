@@ -28,8 +28,6 @@ public struct CSVColumElement
     public ushort ToUInt16() { return (ushort)ToInt64(); }
     public int ToInt32() { return (int)ToInt64(); }
     public uint ToUInt32() { return (uint)ToInt64(); }
-    public float ToFloat() { return  (float)ToDecimal(); }
-    public double ToDouble() { return (double)ToDecimal(); }
     public CommonValue ToCValue() { return new CommonValue(elementValue); }
     public long ToInt64()
     {
@@ -55,15 +53,27 @@ public struct CSVColumElement
             return 0;
         }
     }
-    public decimal ToDecimal()
+    public float ToFloat()
     {
         if (string.IsNullOrEmpty(elementValue)) return 0;
-        decimal ret;
-        if (decimal.TryParse(elementValue, out ret))
+        float ret;
+        if (float.TryParse(elementValue, out ret))
             return ret;
         else
         {
-            Log.Error("ToUInt64类型转换错误:" + elementValue);
+            Log.Error("ToFloat类型转换错误:" + elementValue);
+            return 0;
+        }
+    }
+    public double ToDouble()
+    {
+        if (string.IsNullOrEmpty(elementValue)) return 0;
+        double ret;
+        if (double.TryParse(elementValue, out ret))
+            return ret;
+        else
+        {
+            Log.Error("ToDouble类型转换错误:" + elementValue);
             return 0;
         }
     }
@@ -233,34 +243,80 @@ public class CSVSaveData
     private int mCurrColNum = 0;//当前保存的列数量
     private int mMaxRowNum = 0; //当前总共行数量
     private int mMaxColNum = 0;//当前总共列数量
-    private string mDocumentText = "";
-    private StreamWriter mStreamWriter = null;
-    public bool Open(FileStream fs)
+    private StringBuilder mDocumentText = new StringBuilder();
+
+    private string mFilePath = "";
+
+    /// <summary>
+    /// 打开已有文件
+    /// </summary>
+    public bool Open(string full_path)
     {
-        mStreamWriter = new StreamWriter(fs, System.Text.Encoding.UTF8);
+        mFilePath = full_path;
+        if (!File.Exists(full_path)) return false;
+
+        using (StreamReader reader = new StreamReader(full_path, Encoding.UTF8))
+        {
+            string str = reader.ReadToEnd();
+            mDocumentText.Append(str);
+        }
+        return true;
+    }
+    /// <summary>
+    /// 创建新文件
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public bool New(string full_path)
+    {
+        mFilePath = full_path;
+        try
+        {
+            string path = Path.GetDirectoryName(full_path);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            else if (File.Exists(full_path))
+            {
+                File.Delete(full_path);
+            }
+        }
+        catch(Exception e)
+        {
+            Log.Exception(e);
+            return false;
+        }
+
+        return true;
+    }
+    /// <summary>
+    /// 保存
+    /// </summary>
+    public bool Save()
+    {
+        if (string.IsNullOrEmpty(mFilePath) || mDocumentText.Length == 0) return false;
+        using (StreamWriter writer = new StreamWriter(mFilePath, false, Encoding.UTF8))
+        {
+            writer.Write(mDocumentText);
+        }
         return true;
     }
 
-    public bool Save()
-    {
-        mStreamWriter.Close();
-        return true;
-    }
-    //添加元素
+    /// <summary>
+    /// 添加元素
+    /// </summary>
     public void cat(string s)
 	{
         string str = s.Replace("\"", "\"\"");//替换英文冒号 英文冒号需要换成两个冒号
-        if (str.Contains(',') || str.Contains('"') 
-            || str.Contains('\r') || str.Contains('\n')) //含逗号 冒号 换行符的需要放到引号中
+        if (str.Contains(',') || str.Contains('"') || str.Contains('\r') || str.Contains('\n')) //含逗号 冒号 换行符的需要放到引号中
         {
             str = string.Format("\"{0}\"", str);
         }
-        mDocumentText += str;
-        if (mCurrColNum > 0)
-            mDocumentText += ',';
+        mDocumentText.Append(str);
+        mDocumentText.Append(',');
         mCurrColNum++;
 	}
-
     public void cat(byte val) { cat(val.ToString()); }
     public void cat(sbyte val) { cat(val.ToString()); }
     public void cat(char val) { cat(val.ToString()); }
@@ -274,11 +330,12 @@ public class CSVSaveData
     public void cat(float val) { cat(val.ToString()); }
     public void cat(double val) { cat(val.ToString()); }
 
-
-    //新行
+    /// <summary>
+    /// 新行
+    /// </summary>
     public void newRow()
     {
-        mDocumentText += "\r\n";
+        mDocumentText.Append("\r\n");
         mCurrRowNum++;
         if (mCurrColNum >= mMaxColNum)
             mMaxColNum = mCurrColNum;

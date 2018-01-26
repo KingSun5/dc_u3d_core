@@ -1,36 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using System;
 
 /// <summary>
-/// 界面动画
+/// 场景2d动画
 /// @author hannibal
 /// @time 2016-12-11
 /// </summary>
-[RequireComponent(typeof(Image))]
-public class UISpriteAnimation : UIComponentBase
+[RequireComponent(typeof(SpriteRenderer))]
+public class SceneSpriteAnimation : UIComponentBase
 {
+    private SpriteRenderer mImageSource;
+    private int mCurFrame = 0;
+    private float mDelta = 0;
+    private bool mIsPlaying = false;
+
     public List<Sprite> SpriteFrames;
     public float FPS = 12;
     public bool AutoPlay = true;
     public bool Loop = true;
     public bool Foward = true;
-    public bool SetNativeSize = true;
-    
-    private Image mImageSource;
-    private int mCurFrame = 0;
-    private float mDelta = 0;
-    private bool mIsPlaying = false;
-    /// <summary>
-    /// 完成回调
-    /// </summary>
-    private Action mCompleteFun = null;
 
     public override void Awake()
     {
-        mImageSource = GetComponent<Image>();
+        mImageSource = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -92,7 +86,7 @@ public class UISpriteAnimation : UIComponentBase
                 }
                 else
                 {
-                    this.OnStop();
+                    mIsPlaying = false;
                     return;
                 }
             }
@@ -104,7 +98,7 @@ public class UISpriteAnimation : UIComponentBase
                 }
                 else
                 {
-                    this.OnStop();
+                    mIsPlaying = false;
                     return;
                 }
             }
@@ -163,36 +157,17 @@ public class UISpriteAnimation : UIComponentBase
             mIsPlaying = true;
         }
     }
-    /// <summary>
-    /// 完成回调，针对非循环
-    /// </summary>
-    /// <param name="fun"></param>
-    public void OnCompleted(Action fun)
-    {
-        mCompleteFun = fun;
-    }
+
     private void SetSprite(int idx)
     {
         mImageSource.sprite = SpriteFrames[idx];
-        if (SetNativeSize) mImageSource.SetNativeSize();
     }
-    private void OnStop()
-    {
-        mIsPlaying = false;
-        if(mCompleteFun != null)
-        {
-            mCompleteFun();
-        }
-    }
+
     public int FrameCount
     {
         get
         {
             return SpriteFrames.Count;
         }
-    }
-    public bool IsPlaying
-    {
-        get { return mIsPlaying; }
     }
 }

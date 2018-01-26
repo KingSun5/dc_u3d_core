@@ -22,9 +22,11 @@ public class UIScaleAction : MonoBehaviour
     public bool m_Repeat = true;
 
     private bool m_Active = false;
+    private int m_LoopCount = 0;
 
     void OnEnable()
     {
+        m_LoopCount = 0;
         Start();
     }
 
@@ -36,13 +38,18 @@ public class UIScaleAction : MonoBehaviour
     void OnScaleOut()
     {
         if (!m_Active) return;
-        UIEffectTools.ScaleTo(gameObject, m_Duration, OnScaleIn, 1);
+        UIEffectTools.ScaleTo(gameObject, m_Duration, 1, OnScaleIn);
     }
 
     void OnScaleIn()
     {
         if (!m_Active) return;
-        UIEffectTools.ScaleTo(gameObject, m_Duration, OnScaleOut, m_ToScale);
+        m_LoopCount++;
+        //非循环播放，只执行一次
+        if(m_Repeat || (!m_Repeat && m_LoopCount == 1))
+        {
+            UIEffectTools.ScaleTo(gameObject, m_Duration, m_ToScale, OnScaleOut);
+        }
     }
 
     public void Start()
@@ -52,11 +59,11 @@ public class UIScaleAction : MonoBehaviour
         OnScaleIn();
     }
 
-    public void Stop(float alpha)
+    public void Stop(float scale)
     {
         if (!m_Active) return;
         m_Active = false;
         UIEffectTools.ScaleStop(gameObject);
-        UIEffectTools.ScaleTo(gameObject, 0, null, alpha);
+        UIEffectTools.ScaleTo(gameObject, 0, scale, null);
     }
 }

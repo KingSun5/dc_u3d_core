@@ -35,7 +35,7 @@ public class UIEffectTools
         UIEventListener.Get(receive_obj).ClearEventListener(eUIEventType.Exit);
     }
     //～～～～～～～～～～～～～～～～～～～～～～～渐隐动画~～～～～～～～～～～～～～～～～～～～～～～～//
-    public static void FadeIn(GameObject go, float time, System.Action fun = null, float alpha = 1)
+    public static void FadeIn(GameObject go, float time, float alpha = 1, System.Action fun = null)
     {
         bool is_trigger = false;
         Component[] comps = go.GetComponentsInChildren<Component>();
@@ -57,7 +57,7 @@ public class UIEffectTools
             }
         }
     }
-    public static void FadeOut(GameObject go, float time, System.Action fun = null, float alpha=0)
+    public static void FadeOut(GameObject go, float time, float alpha = 0, System.Action fun = null)
     {
         bool is_trigger = false;
         Component[] comps = go.GetComponentsInChildren<Component>();
@@ -92,7 +92,7 @@ public class UIEffectTools
         }
     }
     //～～～～～～～～～～～～～～～～～～～～～～～缩放动画~～～～～～～～～～～～～～～～～～～～～～～～//
-    public static void ScaleTo(GameObject go, float time, System.Action fun = null, float scale = 1)
+    public static void ScaleTo(GameObject go, float time, float scale = 1, System.Action fun = null)
     {
         if (go == null)
         {
@@ -108,6 +108,30 @@ public class UIEffectTools
         });
     }
     public static void ScaleStop(GameObject go)
+    {
+        if (go == null)
+        {
+            return;
+        }
+        go.transform.DOKill();
+    }
+    //～～～～～～～～～～～～～～～～～～～～～～～移动动画~～～～～～～～～～～～～～～～～～～～～～～～//
+    public static void MoveTo(GameObject go, float time, Vector3 target_pos, System.Action fun = null)
+    {
+        if (go == null)
+        {
+            fun();
+            return;
+        }
+        go.transform.DOLocalMove(target_pos, time).OnComplete(() =>
+        {
+            if (fun != null)
+            {
+                fun();
+            }
+        });
+    }
+    public static void MoveStop(GameObject go)
     {
         if (go == null)
         {

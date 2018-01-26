@@ -51,6 +51,7 @@ public class MathUtils
 	public static int RandRange_Int(int param1, int param2) 
 	{
 		int loc = param1 + (int)(Random.Range(0f, 1f)*(param2-param1));
+        loc = Mathf.Clamp(loc, param1, param2-1);
 		return loc;
 	}
     /// <summary>

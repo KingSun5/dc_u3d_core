@@ -11,7 +11,7 @@ public class FlipTransformer : Transformer
     private bool m_FlipX;
     private bool m_FlipY;
 
-    public static FlipTransformer visible(GameObject target, bool flipX, bool flipY)
+    public static FlipTransformer flip(GameObject target, bool flipX, bool flipY)
     {
         FlipTransformer transformer = new FlipTransformer();
         transformer.m_FlipX = flipX;

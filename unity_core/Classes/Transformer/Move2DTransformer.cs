@@ -60,8 +60,8 @@ public class Move2DTransformer : Transformer
     /// 基于当前点移动：按速度
     /// </summary>
     /// <param name="target">目标对象</param>
-    /// <param name="speedX">x方向速度</param>
-    /// <param name="speedY">y方向速度</param>
+    /// <param name="speedX">x方向每秒移动量</param>
+    /// <param name="speedY">y方向每秒移动量</param>
     /// <param name="time">变换时长</param>
     /// <returns></returns>
     public static Move2DTransformer moveSpeed(GameObject target, float speedX, float speedY, float time, bool is_world = false)

@@ -40,7 +40,8 @@ public class ResourceLoadAsyncThread : ResourceLoadThread
                         ResourceLoaderManager.Instance.AddResource(info.Path, m_LoadRequest.asset);
                         info.Stage = eResChunkStage.LOADED;
                         if (info.Callback != null) info.Callback(new sResLoadResult(true, info.Path));
-                        m_LoadQueue.RemoveAt(0);
+                        //回调过程中，有可能清理了加载项
+                        if(m_LoadQueue.Count > 0 && m_LoadQueue[0].ID == info.ID)m_LoadQueue.RemoveAt(0);
                         m_TotalCount--;
                     }
                 }
