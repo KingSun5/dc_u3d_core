@@ -16,11 +16,13 @@ public class FileUtils
 	static public string MD5ByPathName(string pathName)
 	{
 		try
-		{
-			FileStream file = new FileStream(pathName, FileMode.Open);
-			System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-			byte[] retVal = md5.ComputeHash(file);
-			file.Close();
+        {
+            byte[] retVal;
+			using(FileStream file = new FileStream(pathName, FileMode.Open))
+            {
+                System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                retVal = md5.ComputeHash(file);
+            }
 			
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < retVal.Length; i++)
