@@ -219,4 +219,29 @@ public class GameObjectUtils
         return sprite.bounds.size;
     }
     #endregion
+
+    #region 粒子
+    /// <summary>
+    /// 粒子缩放
+    /// </summary>
+    /// <param name="go"></param>
+    /// <param name="scale"></param>
+    public static void SetParticleScale(GameObject go, float scale)
+    {
+        var hasParticleObj = false;
+        var particles = go.GetComponentsInChildren<ParticleSystem>(true);
+        var max = particles.Length;
+        for (int idx = 0; idx < max; idx++)
+        {
+            var particle = particles[idx];
+            if (particle == null) continue;
+            hasParticleObj = true;
+            particle.transform.localScale *= scale;
+        }
+        if (hasParticleObj)
+        {
+            go.transform.localScale = new Vector3(scale, scale, 1);
+        }
+    }
+    #endregion
 }
