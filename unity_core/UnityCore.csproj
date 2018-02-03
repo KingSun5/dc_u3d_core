@@ -35,13 +35,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\DOTween.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween43">
+    <Reference Include="DOTween43, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\DOTween43.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween46">
+    <Reference Include="DOTween46, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\DOTween46.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween50">
+    <Reference Include="DOTween50, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">

@@ -26,6 +26,12 @@ public class Log
     static public eLogLevel LogLv = eLogLevel.LV_DEBUG;
     static public bool[] EnableType = { true, true, true, true, true };
 
+    public static void Assert(bool condition, string info)
+    {
+        if (condition)
+            return;
+        Log.Error(info);
+    }
     /// <summary>
     /// Unity的Debug.Assert()在发布版本有问题
     /// </summary>
