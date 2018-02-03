@@ -96,6 +96,7 @@
     <Compile Include="Classes\Script\AutoDestroyScript.cs" />
     <Compile Include="Classes\Script\CameraAdjustSize.cs" />
     <Compile Include="Classes\Script\DontDestroyOnLoadScript.cs" />
+    <Compile Include="Classes\Script\DrawCameraView.cs" />
     <Compile Include="Classes\Script\GameObjectMouseScript.cs" />
     <Compile Include="Classes\Script\ParticleAutoDestroyScript.cs" />
     <Compile Include="Classes\Script\SpriteAnimationScript.cs" />
