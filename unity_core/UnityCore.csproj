@@ -73,6 +73,7 @@
     <Compile Include="Classes\Core\BaseType.cs" />
     <Compile Include="Classes\Core\ByteArray.cs" />
     <Compile Include="Classes\Core\CommonValue.cs" />
+    <Compile Include="Classes\Core\MonoSingleton.cs" />
     <Compile Include="Classes\Core\Singleton.cs" />
     <Compile Include="Classes\Event\EventController.cs" />
     <Compile Include="Classes\Event\EventDispatcher.cs" />

@@ -27,6 +27,18 @@ public class Log
     static public bool[] EnableType = { true, true, true, true, true };
 
     /// <summary>
+    /// Unity的Debug.Assert()在发布版本有问题
+    /// </summary>
+    /// <param name="condition">条件</param>
+    /// <param name="info">输出信息</param>
+    static public void Assert(bool condition, string info)
+    {
+        if (condition)
+            return;
+        Log.Error(info);
+    }
+
+    /// <summary>
     /// 临时或测试数据使用：正式游戏后会关闭
     /// </summary>
     static public void Debug(params string[] msg)
